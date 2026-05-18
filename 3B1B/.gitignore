@@ -1,0 +1,5 @@
+# Obsidian 設定（保留核心設定，忽略快取）
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/graph.json
+.trash/

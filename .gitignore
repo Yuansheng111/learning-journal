@@ -1,0 +1,9 @@
+# Obsidian 設定檔 — 本地使用，不需要上 git
+.obsidian/
+
+# 3B1B vault 內的 Obsidian 設定也排除
+3B1B/.obsidian/
+
+# Obsidian 垃圾桶
+.trash/
+3B1B/.trash/
