@@ -20,27 +20,31 @@ A neural network is a massively complex mathematical function — it takes in 78
 
 ## 關鍵直覺 Key Intuitions
 
-- **抽象化是層層堆疊的 Abstraction is hierarchical**：從像素到邊緣到筆畫到數字，每一層隱藏層都在做「把低階特徵組合成高階意義」這件事。
-- Pixel → Edge → Pattern → Digit — each hidden layer assembles lower-level features into higher-level meaning.
+- **抽象化是層層堆疊的 Abstraction is hierarchical**：從像素到邊緣到筆畫到數字，每一層隱藏層都在做「把低階特徵組合成高階意義」這件事。  
+  Pixel → Edge → Pattern → Digit — each hidden layer assembles lower-level features into higher-level meaning.
 
-- **神經元是函數，不是容器 A neuron is a function, not a container**：
-- 更精確的理解是，每個神經元是一個函數，輸入前一層的資料，輸出一個數值給下一層。整個網路是一個超級複合函數。Each neuron is a function that takes in data from the previous layer and outputs a value to the next — the whole network is one giant composite function.
+- **神經元是函數，不是容器 A neuron is a function, not a container**：更精確的理解是，每個神經元是一個函數，輸入前一層的資料，輸出一個數值給下一層。整個網路是一個超級複合函數。  
+  Each neuron is a function that takes in data from the previous layer and outputs a value to the next — the whole network is one giant composite function.
 
-- **「學習」的真面目 What "learning" really means**：機器學習不是什麼魔法，就是讓電腦自己去找出那 13,000 個權重與偏置的最佳設定值。ML is not magic — it's just finding the optimal values for ~13,000 weights and biases.
+- **一條連線就是一個信任程度 One connection = one trust level**：每條連線回答的問題是「我應該聽前面那個神經元的話聽多少？」，這個「多少」就是權重。  
+  Each connection answers: "How much should I trust the neuron on the other end?" That "how much" is the weight.
+
+- **「學習」的真面目 What "learning" really means**：機器學習不是什麼魔法，就是讓電腦自己去找出那 13,000 個權重與偏置的最佳設定值。  
+  ML is not magic — it's just finding the optimal values for ~13,000 weights and biases.
 
 ## 重要術語 Key Terms
 
-| 中文         | English                      | 說明 Description                                                                                      |
-| ---------- | ---------------------------- | --------------------------------------------------------------------------------------------------- |
-| 神經元        | Neuron                       | 網路的基本單位，裝著一個 0~1 的激勵值 <br>Basic unit holding an activation value between 0 and 1                    |
-| 激勵值        | Activation                   | 神經元持有的數值，代表「激發程度」<br>The number a neuron holds, representing how activated it is                    |
-| 權重         | Weight                       | 神經元間連線的強度，決定關注哪種圖樣 <br>Strength of connections between neurons, determines what pattern to look for |
-| 偏置         | Bias                         | 激發的門檻值，加權總和須超過它才會點亮 <br>Threshold for activation — weighted sum must exceed it to fire              |
-| 輸入層        | Input Layer                  | 784 個神經元，對應 28×28 像素 <br>784 neurons corresponding to 28×28 pixels                                  |
-| 隱藏層        | Hidden Layer                 | 負責拆解與抽象化資訊 <br>Responsible for decomposing and abstracting information                              |
-| 輸出層        | Output Layer                 | 10 個神經元，對應數字 0~9 <br>10 neurons corresponding to digits 0–9                                         |
-| Sigmoid 函數 | Sigmoid Function             | 將任意實數壓縮到 0~1 的函數，早期常用 <br>Squishes any real number into 0–1 range, used in early networks           |
-| ReLU       | ReLU (Rectified Linear Unit) | 現代主流激勵函數，小於 0 輸出 0，大於 0 等於輸入值<br>Modern standard: outputs 0 if input < 0, else outputs input        |
+| 中文 | English | 說明 Description |
+|------|---------|-----------------|
+| 神經元 | Neuron | 網路的基本單位，裝著一個 0~1 的激勵值 / Basic unit holding an activation value between 0 and 1 |
+| 激勵值 | Activation | 神經元持有的數值，代表「激發程度」/ The number a neuron holds, representing how activated it is |
+| 權重 | Weight | 神經元間連線的強度，代表對前一個神經元的「信任程度」/ Strength of connection — how much to trust the previous neuron |
+| 偏置 | Bias | 激發的門檻值，加權總和須超過它才會點亮 / Threshold for activation — weighted sum must exceed it to fire |
+| 輸入層 | Input Layer | 784 個神經元，對應 28×28 像素 / 784 neurons corresponding to 28×28 pixels |
+| 隱藏層 | Hidden Layer | 負責拆解與抽象化資訊 / Responsible for decomposing and abstracting information |
+| 輸出層 | Output Layer | 10 個神經元，對應數字 0~9 / 10 neurons corresponding to digits 0–9 |
+| Sigmoid 函數 | Sigmoid Function | 將任意實數壓縮到 0~1 的函數，早期常用 / Squishes any real number into 0–1 range, used in early networks |
+| ReLU | ReLU (Rectified Linear Unit) | 現代主流激勵函數，小於 0 輸出 0，大於 0 等於輸入值 / Modern standard: outputs 0 if input < 0, else outputs input |
 
 ## 筆記 Notes
 
@@ -51,15 +55,39 @@ A neural network is a massively complex mathematical function — it takes in 78
       像素 pixels         邊緣 edges             圖樣 patterns          數字 digits
 ```
 
+### 為什麼一條連線就是一個權重？Why does one connection = one weight?
+
+一條連線的任務，就是回答「我應該聽前面那個神經元的話聽多少？」這個「多少」就是權重。  
+Each connection answers one question: "How much should I trust the neuron on the other end?" That "how much" is the weight.
+
+以隱藏層中負責「偵測左上角邊緣」的神經元為例：  
+Take a hidden neuron whose job is to detect edges in the top-left corner:
+
+- 左上角的像素 → 非常在乎 → 權重設很大  
+  Top-left pixels → highly relevant → large weight
+- 右下角的像素 → 無關 → 權重接近 0  
+  Bottom-right pixels → irrelevant → weight near 0
+- 某些像素反而是反指標 → 權重設成負數  
+  Some pixels are counter-indicators → negative weight
+
+所以這個神經元的輸出是：  
+So this neuron computes:
+
+$$\text{output} = w_1 a_1 + w_2 a_2 + \dots + w_{784} a_{784} + b$$
+
+每一個 $w$ 就是對那條連線的「信任程度」。有連線才有信任程度，所以**一條連線 = 一個權重**。  
+Each $w$ is the neuron's trust level for that connection. No connection, no trust level — so **one connection = one weight**.
+
 ### 參數量計算 Parameter Count
 
-兩層之間的連線數 = 前一層神經元數 × 後一層神經元數  
-Number of connections between layers = neurons in layer A × neurons in layer B
+第二層 16 個神經元，每個神經元的任務不同（偵測不同的特徵），所以每個人對 784 個輸入的信任程度都不一樣，各自擁有獨立的 784 個權重。  
+The 16 neurons in the second layer each have different jobs, so each has its own independent set of 784 trust levels.
 
-$$784 \times 16 = 12{,}544 \text{ 個權重 weights}$$
+$$16 \text{ 個神經元} \times 784 \text{ 個權重} = 784 \times 16 = 12{,}544$$
 
-加上每層的偏置，整個網路約 13,000 個參數。  
-Adding biases for each neuron, the total is ~13,000 parameters.
+完整計算 Full parameter count：
+
+$$\underbrace{784 \times 16}_{12{,}544} + \underbrace{16 \times 16}_{256} + \underbrace{16 \times 10}_{160} + \underbrace{16 + 16 + 10}_{42 \text{ biases}} = 13{,}002$$
 
 ### 矩陣化加速 Matrix Formulation
 
@@ -78,12 +106,12 @@ This is why AI needs GPUs — GPUs are hardware built for massively parallel mat
 
 ### Sigmoid vs. ReLU
 
-|                      | Sigmoid                            | ReLU  |     |
-| -------------------- | ---------------------------------- | ----- | --- |
-| 輸出範圍 Output range    | 0 ~ 1                              | 0 ~ ∞ |     |
-| 早期用途 Early use       | 模仿神經元開/關 Mimic neuron on/off       | —     |     |
-| 問題 Problem           | 深層網路訓練慢 Slow to train in deep nets | —     |     |
-| 現代主流 Modern standard | ❌                                  | ✅     |     |
+| | Sigmoid | ReLU |
+|---|---|---|
+| 輸出範圍 Output range | 0 ~ 1 | 0 ~ ∞ |
+| 早期用途 Early use | 模仿神經元開/關 Mimic neuron on/off | — |
+| 問題 Problem | 深層網路梯度消失 Vanishing gradient in deep nets | Dying ReLU（神經元永久死掉） |
+| 現代主流 Modern standard | ❌ | ✅ |
 
 ## 跟我的關聯 Relevance to Me
 
@@ -95,9 +123,7 @@ Object recognition in digital twin systems (e.g., sensor data in Isaac Sim) does
 
 - [ ] 隱藏層「理想上」負責辨識邊緣和筆畫，但實際訓練出來的神經元真的是這樣分工的嗎？還是完全不同的東西？  
       Ideally hidden layers detect edges then patterns — but do trained networks actually work this way, or do neurons learn something completely different?
-- [ ] Sigmoid 在深層網路中訓練慢的原因是什麼？（梯度消失問題？）  
-      Why exactly does Sigmoid train slowly in deep networks? (Vanishing gradient problem?)
 
-## 關鍵知識點連結 Key Knowledge Links
+## 連結 Links
 
 [[梯度下降 Gradient Descent]] · [[激活函數 Activation Function]] · [[矩陣 Matrix]] · [[向量 Vector]]
