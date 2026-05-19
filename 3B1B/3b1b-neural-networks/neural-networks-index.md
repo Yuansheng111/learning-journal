@@ -22,17 +22,17 @@ Build ML intuition first; linear algebra and calculus will make more sense after
 
 ## 觀看進度 Progress
 
-| 集數 Ep | 標題 Title                                                              | 狀態 Status | 日期 Date    |
-| ----- | --------------------------------------------------------------------- | --------- | ---------- |
-| 01    | But what is a neural network? 什麼是神經網路？                                | ✅         | 2026-05-18 |
-| 02    | Gradient descent, how neural networks learn 梯度下降，神經網路如何學習             | ⬜         |            |
-| 03    | Backpropagation, intuitively 反向傳播，直覺理解                                | ⬜         |            |
-| 04    | Backpropagation calculus 反向傳播的微積分                                     | ⬜         |            |
-| 05    | Large Language Models explained briefly LLM 簡短解說                      | ⬜         |            |
-| 06    | Transformers, the tech behind LLMs Transformer，LLM 背後的技術              | ⬜         |            |
-| 07    | Attention in transformers, step-by-step Transformer 中的 Attention，逐步解析 | ⬜         |            |
-| 08    | How might LLMs store facts LLM 如何儲存知識                                 | ⬜         |            |
-| 09    | But how do AI images and videos actually work? AI 圖像與影片實際上如何運作？       | ⬜         |            |
+| 集數 Ep | 標題 Title | 狀態 Status | 日期 Date |
+|---------|-----------|-------------|-----------|
+| 01 | But what is a neural network? 什麼是神經網路？ | ✅ | 2026-05-18 |
+| 02 | Gradient descent, how neural networks learn 梯度下降，神經網路如何學習 | ✅ | 2026-05-19 |
+| 03 | Backpropagation, intuitively 反向傳播，直覺理解 | ⬜ |  |
+| 04 | Backpropagation calculus 反向傳播的微積分 | ⬜ |  |
+| 05 | Large Language Models explained briefly LLM 簡短解說 | ⬜ |  |
+| 06 | Transformers, the tech behind LLMs Transformer，LLM 背後的技術 | ⬜ |  |
+| 07 | Attention in transformers, step-by-step Transformer 中的 Attention，逐步解析 | ⬜ |  |
+| 08 | How might LLMs store facts LLM 如何儲存知識 | ⬜ |  |
+| 09 | But how do AI images and videos actually work? AI 圖像與影片實際上如何運作？ | ⬜ |  |
 
 <!-- ⬜ 未看 Not started / 🟡 看了未寫筆記 Watched / ✅ 完成 Done -->
 
@@ -43,3 +43,4 @@ Build ML intuition first; linear algebra and calculus will make more sense after
 ## 所有集數筆記 Episode Notes
 
 - [[01-what-is-a-neural-network]]
+- [[02-gradient-descent]]
