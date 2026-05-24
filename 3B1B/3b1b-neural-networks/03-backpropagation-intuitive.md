@@ -53,11 +53,11 @@ Backpropagation is an accountability algorithm — when the output is wrong, it 
 以輸出層「2」的神經元為例，想讓它變亮：  
 For the output neuron representing "2" — to make it brighter:
 
-| 途徑 Method                            | 說明 Description                                                                                | 效益最大化條件 When most effective                                            |
-| ------------------------------------ | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| 增加偏置 Increase bias                   | 直接拉高激發門檻 / Directly raises the activation threshold                                           | 永遠有效 Always effective                                                  |
-| 增加權重 Increase weights                | 加強與前一層的連線強度 / Strengthen connections from previous layer                                      | 前一層神經元越亮效益越大 / More effective when previous neurons are already bright |
-| 改變前一層激勵值 Change previous activations | 讓正權重連線的神經元變亮、負權重的變暗 / Brighten neurons with positive weights, dim those with negative weights | 權重絕對值越大效益越高 / More effective when weight magnitude is large            |
+| 途徑 Method | 說明 Description | 效益最大化條件 When most effective |
+|---|---|---|
+| 增加偏置 Increase bias | 直接拉高激發門檻 / Directly raises the activation threshold | 永遠有效 Always effective |
+| 增加權重 Increase weights | 加強與前一層的連線強度 / Strengthen connections from previous layer | 前一層神經元越亮效益越大 / More effective when previous neurons are already bright |
+| 改變前一層激勵值 Change previous activations | 讓正權重連線的神經元變亮、負權重的變暗 / Brighten neurons with positive weights, dim those with negative weights | 權重絕對值越大效益越高 / More effective when weight magnitude is large |
 
 ### 反向傳播的完整流程 Full Backpropagation Flow
 
@@ -90,13 +90,13 @@ If we only update based on one "2" image, the network will eventually classify e
 
 ## 跟我的關聯 Relevance to Me
 
-在自動化配管專案裡，有些是處理的是層層包裹的 Rule-based 函數——最終輸出某個配管細節，但有時候結果是錯的。這時候要做的事跟反向傳播幾乎一模一樣：從錯誤的結果往回追查，穿過一層又一層的函數邏輯，找出最原始的源頭參數，確認它對這個錯誤要負多少責任，再修正它。
+在自動化配管專案裡，處理的是層層包裹的 Rule-based 函數——最終輸出某個配管細節，但有時候結果是錯的。這時候要做的追查邏輯跟反向傳播很像：從錯誤的結果往回追查，穿過一層又一層的函數邏輯，評估每一層對這個錯誤要負多少責任。
 
-反向傳播的梯度大小，對應的就是「這個參數對最終錯誤的影響力有多大」——跟配管追查時，判斷「這個判斷邏輯是不是關鍵節點」是同樣的思路。而且這也預告了為什麼下一集需要鏈式法則，跟追配管問題時要把每一層邏輯都走一遍是一樣的。
+不過這裡有一個關鍵差異值得記下來：配管除錯時，通常找到根源參數就修那一個。但反向傳播是**每一層的參數都調整**，只是幅度按各自的責任大小分配——梯度大的調多，梯度小的調少，沒有哪一層被跳過。這也是為什麼下一集需要鏈式法則（Chain Rule）：要算出每一層的責任，而不是只找到最底層的那個根源。
 
-In the automated piping project, some of the system is built from layers of nested rule-based functions — the final output is a piping detail, but sometimes it's wrong. What we do next is almost identical to backpropagation: trace back from the wrong result through layer after layer of function logic, find the root source parameter, assess how much it contributed to the error, and correct it.
+In the automated piping project, the system is built from layers of nested rule-based functions — the final output is a piping detail, but sometimes it's wrong. The tracing logic resembles backpropagation: follow the error back through layer after layer of function logic, assessing how much each layer contributed to the mistake.
 
-The gradient magnitude in backpropagation corresponds to "how much does this parameter influence the final error" — the same judgment as identifying whether a particular rule is a critical node when tracing a piping issue. This also foreshadows why the next episode needs the chain rule, just like walking through every layer of logic when debugging a piping problem.
+But there's a key difference worth noting: when debugging piping, we typically find the root parameter and fix just that one. Backpropagation adjusts parameters at **every layer simultaneously** — with magnitudes proportional to each layer's responsibility. Larger gradient means larger adjustment; no layer is skipped. This is also why the chain rule is needed next episode: to compute each layer's responsibility, rather than tracing down to a single root cause.
 
 ## 還沒搞懂的 Still Unclear
 
