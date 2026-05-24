@@ -121,8 +121,9 @@ Object recognition in digital twin systems (e.g., sensor data in Isaac Sim) does
 
 ## 還沒搞懂的 Still Unclear
 
-- [ ] 隱藏層「理想上」負責辨識邊緣和筆畫，但實際訓練出來的神經元真的是這樣分工的嗎？還是完全不同的東西？  
+- [x] 隱藏層「理想上」負責辨識邊緣和筆畫，但實際訓練出來的神經元真的是這樣分工的嗎？還是完全不同的東西？   
       Ideally hidden layers detect edges then patterns — but do trained networks actually work this way, or do neurons learn something completely different?
+---->  NO!
 
 ## 連結 Links
 
