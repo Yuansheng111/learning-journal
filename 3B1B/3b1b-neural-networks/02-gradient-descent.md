@@ -99,11 +99,11 @@ Research shows: in very high-dimensional networks, most local minima are about e
 
 ### 網路的真實限制 Real Limitations of This Network
 
-| | 理想 Ideal | 現實 Reality |
-|---|---|---|
-| 第一隱藏層學到 1st hidden layer learns | 邊緣 Edges | 隨機雜訊圖案 Random noise patterns |
-| 面對隨機雜訊輸入 Given random noise input | 困惑 Confused | 極度自信地亂猜 Extremely confident wrong guess |
-| 學習機制 Learning mechanism | 理解幾何 Geometric understanding | 切割高維邊界 Carving high-dimensional boundaries |
+|                                   | 理想 Ideal                     | 現實 Reality                                        |
+| --------------------------------- | ---------------------------- | ------------------------------------------------- |
+| 第一隱藏層學到 1st hidden layer learns   | 邊緣 Edges                     | 隨機雜訊圖案 Random noise patterns                      |
+| 面對隨機雜訊輸入 Given random noise input | 困惑 Confused                  | 極度自信地亂猜 Extremely confident wrong guess           |
+| 學習機制 Learning mechanism           | 理解幾何 Geometric understanding | 切割高維邊界(分割資料集) Carving high-dimensional boundaries |
 
 ### 論文彩蛋 Paper Insights
 
@@ -133,7 +133,7 @@ Cost is neither a parameter (like weight $w$ or bias $b$), nor a hyperparameter 
 | 超參數 Hyperparameters | 網路層數、每層神經元數、學習率 / Number of layers, neurons per layer, learning rate |
 | 評分指標 Score metric   | **Cost / Loss** ← 這個                                                 |
 
-### Q3｜什麼是多變量微積分？What is Multivariable Calculus?
+### Q3｜什麼是多變量微積分？Multivariable Calculus
 
 高中微積分處理單一變數 $f(x)$，畫出來是一條 2D 曲線，「斜率」就是導數。多變量微積分處理擁有多個輸入變數的函數，例如 $f(x, y, z)$。我們的 Cost 函數有 13,000 個輸入變數，所以需要多變量微積分中的「梯度」概念，才能在超高維度空間裡找出最陡峭的下坡方向。  
 High school calculus deals with single-variable functions $f(x)$ — a 2D curve where "slope" is the derivative. Multivariable calculus handles functions with multiple inputs, like $f(x, y, z)$. Our cost function has 13,000 input variables, so we need the multivariable concept of "gradient" to find the direction of steepest descent in that ultra-high-dimensional space.
@@ -148,12 +148,10 @@ The logic of gradient descent resembles optimization in control systems (e.g., P
 
 ## 還沒搞懂的 Still Unclear
 
-- [ ] 反向傳播實際上是怎麼高效計算出 13,000 維梯度的？（下一集）  
-      How does backpropagation actually compute the 13,000-dimensional gradient efficiently? (Next episode)
 - [ ] 學習率（步長）太大或太小分別會發生什麼？有自動調整的方法嗎？  
       What happens if the learning rate is too large or too small? Are there methods to auto-adjust it?
-- [ ] 隨機梯度下降（SGD）跟這裡說的梯度下降有什麼差別？  
-      What's the difference between stochastic gradient descent (SGD) and the gradient descent described here?
+- [x] ~~隨機梯度下降（SGD）跟這裡說的梯度下降有什麼差別？~~ → 已於 Ep.03 解答  
+      ~~What's the difference between stochastic gradient descent (SGD) and the gradient descent described here?~~ → Answered in Ep.03
 
 ## 推薦資料 References
 
