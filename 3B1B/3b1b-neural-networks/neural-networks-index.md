@@ -26,7 +26,7 @@ Build ML intuition first; linear algebra and calculus will make more sense after
 |---------|-----------|-------------|-----------|
 | 01 | But what is a neural network? 什麼是神經網路？ | ✅ | 2026-05-18 |
 | 02 | Gradient descent, how neural networks learn 梯度下降，神經網路如何學習 | ✅ | 2026-05-19 |
-| 03 | Backpropagation, intuitively 反向傳播，直覺理解 | ⬜ |  |
+| 03 | Backpropagation, intuitively 反向傳播，直覺理解 | ✅ | 2026-05-19 |
 | 04 | Backpropagation calculus 反向傳播的微積分 | ⬜ |  |
 | 05 | Large Language Models explained briefly LLM 簡短解說 | ⬜ |  |
 | 06 | Transformers, the tech behind LLMs Transformer，LLM 背後的技術 | ⬜ |  |
@@ -44,3 +44,4 @@ Build ML intuition first; linear algebra and calculus will make more sense after
 
 - [[01-what-is-a-neural-network]]
 - [[02-gradient-descent]]
+- [[03-backpropagation-intuitive]]
